@@ -1,7 +1,7 @@
 package com.example.labweek7.data.container
 
-import com.example.labweek7.data.repository.WeatherAppServerRepository
-import com.example.labweek7.data.service.WeaherAppServerService
+import com.example.labweek7.data.repository.ArtisAppRepository
+import com.example.labweek7.data.service.ArtisAppService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -19,11 +19,11 @@ class WeatherContainer {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    val retrofitService: WeaherAppServerService by lazy {
-        retrofit.create(WeaherAppServerService::class.java)
+    val retrofitService: ArtisAppService by lazy {
+        retrofit.create(ArtisAppService::class.java)
     }
 
-    val repository : WeatherAppServerRepository by lazy {
-        WeatherAppServerRepository(retrofitService)
+    val repository : ArtisAppRepository by lazy {
+        ArtisAppRepository(retrofitService)
     }
 }
