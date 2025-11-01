@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -28,7 +29,7 @@ fun AlbumDetailView(
     modifier: Modifier = Modifier,
     artist: ArtistDisplay,
     album: AlbumDisplay,
-    tracks: TrackDisplay
+    tracks: List<TrackDisplay>
 
 ) {
     Column(
@@ -79,20 +80,21 @@ fun AlbumDetailView(
             Spacer(modifier = Modifier.height(8.dp))
 
             LazyColumn {
-                items(tracks) { index -> track
+                items(tracks) { track ->
                     TrackCard(
                         track = TrackDisplay(
-                            id = index.id,
-                            title = index.title,
-                            duration = index.duration
+                            id = track.id,
+                            title = track.title,
+                            duration = track.duration
                         )
                     )
+                }
             }
         }
 
     }
 }
-}
+
 
 
 
@@ -118,10 +120,37 @@ fun AlbumDetailViewPreview() {
             description = "Classic album",
             genre = "Pop"
         ),
-        tracks = TrackDisplay(
-            id = "TODO()",
-            title = "Best Hits",
-            duration = "20:02"
+        tracks = listOf(
+            TrackDisplay(
+                id = "1",
+                title = "Song Title",
+                duration = "03:45"
+            ),
+            TrackDisplay(
+                id = "1",
+                title = "Song Title",
+                duration = "03:45"
+            ),
+            TrackDisplay(
+                id = "1",
+                title = "Song Title",
+                duration = "03:45"
+            ),
+            TrackDisplay(
+                id = "1",
+                title = "Song Title",
+                duration = "03:45"
+            ),
+            TrackDisplay(
+                id = "1",
+                title = "Song Title",
+                duration = "03:45"
+            ),
+            TrackDisplay(
+                id = "1",
+                title = "Song Title",
+                duration = "03:45"
+            )
         )
     )
 }
