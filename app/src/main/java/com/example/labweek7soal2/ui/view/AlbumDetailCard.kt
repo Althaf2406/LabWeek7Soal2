@@ -18,18 +18,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import com.example.labweek7.ui.model.AlbumDisplay
+
 
 @Composable
 fun AlbumDetailCard(
-    modifier: Modifier = Modifier,
-    imageUrl: String?,
-    albumName: String?,
-    releaseYear: String?,
-    genre: String?,
-    description: String?
+    album: AlbumDisplay
 ) {
     Card(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxWidth()
             .border(BorderStroke(1.dp, Color.Gray.copy(alpha = 0.4f)), RoundedCornerShape(8.dp)),
         shape = RoundedCornerShape(8.dp),
@@ -37,8 +34,8 @@ fun AlbumDetailCard(
     ) {
         Column(modifier = Modifier.fillMaxWidth()) {
             AsyncImage(
-                model = imageUrl,
-                contentDescription = albumName,
+                model = album.thumbUrl,
+                contentDescription = album.title,
                 modifier = Modifier
                     .fillMaxWidth()
                     .aspectRatio(1f)
@@ -53,7 +50,7 @@ fun AlbumDetailCard(
                     .padding(14.dp)
             ) {
                 Text(
-                    text = albumName ?: "Unknown Album",
+                    text = album.title ?: "Unknown Album",
                     color = Color(0xFFAEAC96),
                     fontWeight = FontWeight.Bold,
                     fontSize = 20.sp
@@ -62,7 +59,7 @@ fun AlbumDetailCard(
                 Spacer(modifier = Modifier.height(4.dp))
 
                 Text(
-                    text = "$releaseYear • $genre",
+                    text = "${album.year} • ${album.genre}",
                     color = Color(0xFFAEAC96),
                     fontSize = 14.sp
                 )
@@ -70,7 +67,7 @@ fun AlbumDetailCard(
                 Spacer(modifier = Modifier.height(12.dp))
 
                 Text(
-                    text = description ?: "No description available.",
+                    text = album.description ?: "No description available.",
                     color = Color(0xFFAEAC96),
                     fontSize = 13.sp,
                     lineHeight = 20.sp
@@ -84,10 +81,13 @@ fun AlbumDetailCard(
 @Preview
 fun AlbumDetailCardPreview() {
     AlbumDetailCard(
-        imageUrl = "",
-        albumName = "Room for Squares",
-        releaseYear = "2001",
-        genre = "Pop Rock",
-        description = "Debut album by John Mayer featuring hits like 'No Such Thing' and 'Your Body Is a Wonderland.'"
+        album = AlbumDisplay(
+            id = "1",
+            title = "Best Hits",
+            year = "2002",
+            thumbUrl = "",
+            description = "Classic album",
+            genre = "Pop"
+        )
     )
 }
