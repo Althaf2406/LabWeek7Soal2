@@ -1,5 +1,6 @@
 package com.example.labweek7soal2.ui.view
 
+import ArtisAppRepository
 import ArtisViewModel
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -16,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.labweek7soal2.data.dto.Album
@@ -57,9 +59,27 @@ fun ArtistDetailScreen(
             modifier = Modifier.fillMaxWidth(),
             content = {
                 items(state.albums) { album ->
-                    ArtisAppAlbumCard (album = album, onClick = { onAlbumClick(album) })
+                    ArtisAppAlbumCard(
+                        artist = state.selectedArtist ?: return@items,
+                        onClick = { onAlbumClick(album) },
+                        album = album,
+                    )
                 }
             }
         )
     }
+}
+
+@Composable
+@Preview
+fun ArtistDetailScreenPreview(){
+    ArtistDetailScreen(
+        aVM = ArtisViewModel(
+            repo = ArtisAppRepository(
+                service = ArtisAppService.create()
+            )
+        ),
+        onAlbumClick = {}
+
+    ) { }
 }

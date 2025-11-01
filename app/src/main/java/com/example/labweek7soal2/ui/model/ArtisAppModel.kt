@@ -6,10 +6,10 @@ import com.example.labweek7soal2.data.dto.Artist
 import com.example.labweek7soal2.data.dto.Track
 
 data class ArtistDisplay(
-    val id: String,
-    val name: String,
-    val genre: String,
-    val biography: String,
+    val id: String?,
+    val name: String?,
+    val genre: String?,
+    val biography: String?,
     val thumbUrl: String?,
     val bannerUrl: String?
 ) {
@@ -48,8 +48,8 @@ data class AlbumDisplay(
 }
 
 data class TrackDisplay(
-    val id: String,
-    val title: String,
+    val id: String?,
+    val title: String?,
     val duration: String?
 ) {
     companion object {
@@ -57,7 +57,7 @@ data class TrackDisplay(
             return TrackDisplay(
                 id = api.idTrack ?: "",
                 title = api.strTrack ?: "Unknown Track",
-                duration = api.intDuration
+                duration = api.intDuration?: "Unknown Duration"
             )
         }
     }

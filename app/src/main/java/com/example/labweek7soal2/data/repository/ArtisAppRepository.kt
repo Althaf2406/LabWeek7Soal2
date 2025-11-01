@@ -3,7 +3,7 @@ import com.example.labweek7soal2.data.dto.Artist
 import com.example.labweek7soal2.data.dto.Track
 
 
-class ArtisAppRepository(private val service: AudioDbService) {
+class ArtisAppRepository(private val service: ArtisAppService) {
 
     suspend fun searchArtist(name: String): Result<List<Artist>> {
         return try {

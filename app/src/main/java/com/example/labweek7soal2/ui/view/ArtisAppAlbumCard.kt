@@ -15,12 +15,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.labweek7soal2.data.dto.Album
 import com.example.labweek7soal2.data.dto.Artist
 
 @Composable
 fun ArtisAppAlbumCard(
     artist: Artist,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    album: Album
 ) {
     Card(
         modifier = Modifier
@@ -82,24 +84,34 @@ fun ArtisAppAlbumCardPreview() {
             strCountry = null,
             strLocked = null,
             strCountryCode = null,
-            idLabel = TODO(),
-            intBornYear = TODO(),
-            intCharted = TODO(),
-            intDiedYear = TODO(),
-            intMembers = TODO(),
-            strArtistCutout = TODO(),
-            strArtistFanart2 = TODO(),
-            strArtistFanart3 = TODO(),
-            strArtistFanart4 = TODO(),
-            strArtistStripped = TODO(),
-            strBiographyPL = TODO(),
-            strBiographyRU = TODO(),
-            strDisbanded = TODO(),
-            strISNIcode = TODO(),
-            strLastFMChart = TODO(),
-            strMusicBrainzID = TODO(),
+            idLabel = null,
+            intBornYear = null,
+            intCharted = null,
+            intDiedYear = null,
+            intMembers = null,
+            strArtistCutout = null,
+            strArtistFanart2 = null,
+            strArtistFanart3 = null,
+            strArtistFanart4 = null,
+            strArtistStripped = null,
+            strBiographyPL = null,
+            strBiographyRU = null,
+            strDisbanded = null,
+            strISNIcode = null,
+            strLastFMChart = null,
+            strMusicBrainzID = null,
         ),
-        onClick ={}
+        onClick = {},
+        album = Album(
+            idAlbum = "1",
+            strAlbum = "Album Name",
+            strArtist = "Artist Name",
+            strAlbumThumb ="",
+            intYearReleased =  "",
+            strGenre = "",
+            strDescriptionEN = "",
+        )
+
     )
 
 }
