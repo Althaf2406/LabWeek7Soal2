@@ -11,7 +11,8 @@ data class ArtistDisplay(
     val genre: String?,
     val biography: String?,
     val thumbUrl: String?,
-    val bannerUrl: String?
+    val bannerUrl: String?,
+    val fanartUrl: String?
 ) {
     companion object {
         fun from(api: Artist): ArtistDisplay {
@@ -21,7 +22,8 @@ data class ArtistDisplay(
                 genre = api.strGenre ?: "Unknown Genre",
                 biography = api.strBiographyEN ?: "No biography available.",
                 thumbUrl = api.strArtistThumb,
-                bannerUrl = api.strArtistBanner
+                bannerUrl = api.strArtistBanner,
+                fanartUrl = api.strArtistFanart
             )
         }
     }
@@ -32,7 +34,8 @@ data class AlbumDisplay(
     val title: String,
     val year: String?,
     val thumbUrl: String?,
-    val description: String?
+    val description: String?,
+    val genre: String?
 ) {
     companion object {
         fun from(api: Album): AlbumDisplay {
@@ -41,7 +44,9 @@ data class AlbumDisplay(
                 title = api.strAlbum ?: "Untitled Album",
                 year = api.intYearReleased,
                 thumbUrl = api.strAlbumThumb,
-                description = api.strDescriptionEN
+                description = api.strDescriptionEN ?: "No description available.",
+                genre = api.strGenre ?: "Unknown Genre"
+
             )
         }
     }
