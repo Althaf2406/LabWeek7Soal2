@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.labweek7.ui.model.AlbumDisplay
+import com.example.labweek7.ui.model.ArtistDisplay
 import com.example.labweek7soal2.data.dto.Artist
 import com.example.labweek7soal2.ui.view.AlbumCard
 
@@ -35,7 +36,7 @@ fun ArtistAwalView(
     albums: List<AlbumDisplay>,
     modifier: Modifier = Modifier,
     onAlbumClick: (albumId: String) -> Unit,
-    artist: Artist
+    artist: ArtistDisplay
 ) {
     Column (
         modifier = Modifier
@@ -50,7 +51,7 @@ fun ArtistAwalView(
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            artist.strArtist?.let {
+            artist.name?.let {
                 Text(
                     it,
                     style = MaterialTheme.typography.headlineMedium
@@ -68,8 +69,8 @@ fun ArtistAwalView(
         ) {
             Box {
                 AsyncImage(
-                    model = artist.strArtistFanart ?: artist.strArtistBanner ?: artist.strArtistThumb,
-                    contentDescription = artist.strArtist,
+                    model = artist.fanartUrl ?: artist.bannerUrl ?: artist.thumbUrl,
+                    contentDescription = artist.name,
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(380.dp),
@@ -87,14 +88,14 @@ fun ArtistAwalView(
                         .padding(16.dp)
                         .fillMaxWidth()
                 ) {
-                    artist.strArtist?.let {
+                    artist.name?.let {
                         Text(
                             it,
                             style = MaterialTheme.typography.headlineMedium
                         )
                     }
                     Text(
-                        artist.strGenre ?: "Unknown Genre",
+                        artist.genre ?: "Unknown Genre",
                         style = MaterialTheme.typography.bodyMedium
                     )
                 }
@@ -124,57 +125,14 @@ fun ArtistAwalView(
 @Preview(showBackground = true, showSystemUi = true)
 fun ArtisAwalViewPreview() {
     ArtistAwalView(
-        artist = Artist(
-            idArtist = "1",
-            idLabel = "",
-            intBornYear = "",
-            intCharted = "",
-            intDiedYear = "",
-            intFormedYear = "",
-            intMembers = "",
-            strArtist = "LUIIIIII",
-            strArtistAlternate = "",
-            strArtistBanner = "",
-            strArtistClearart = "",
-            strArtistCutout = "",
-            strArtistFanart = "",
-            strArtistFanart2 = "",
-            strArtistFanart3 = "",
-            strArtistFanart4 = "",
-            strArtistLogo = "",
-            strArtistStripped = "",
-            strArtistThumb = "",
-            strArtistWideThumb = "",
-            strBiographyCN = "",
-            strBiographyDE = "",
-            strBiographyEN = "",
-            strBiographyES = "",
-            strBiographyFR = "",
-            strBiographyHU = "",
-            strBiographyIL = "",
-            strBiographyIT = "",
-            strBiographyJP = "",
-            strBiographyNL = "",
-            strBiographyNO = "",
-            strBiographyPL = "",
-            strBiographyPT = "",
-            strBiographyRU = "",
-            strBiographySE = "",
-            strCountry = "",
-            strCountryCode = "",
-            strDisbanded = "",
-            strFacebook = "",
-            strGender = "",
-            strGenre = "Gacor!!!!",
-            strISNIcode = "",
-            strLabel = "",
-            strLastFMChart = "",
-            strLocked = "",
-            strMood = "",
-            strMusicBrainzID = "",
-            strStyle = "",
-            strTwitter = "",
-            strWebsite = "",
+        artist = ArtistDisplay(
+            id ="1",
+            name = "Tole",
+            genre = "Dangdut",
+            biography = "Ya Gitulah",
+            thumbUrl = "",
+            bannerUrl = "",
+            fanartUrl = ""
         ),
         albums = listOf(
             AlbumDisplay(

@@ -53,7 +53,7 @@ fun AlbumDetailCard(
                     .padding(14.dp)
             ) {
                 Text(
-                    text = albumName,
+                    text = albumName ?: "Unknown Album",
                     color = Color(0xFFAEAC96),
                     fontWeight = FontWeight.Bold,
                     fontSize = 20.sp
@@ -70,7 +70,7 @@ fun AlbumDetailCard(
                 Spacer(modifier = Modifier.height(12.dp))
 
                 Text(
-                    text = description,
+                    text = description ?: "No description available.",
                     color = Color(0xFFAEAC96),
                     fontSize = 13.sp,
                     lineHeight = 20.sp
@@ -80,8 +80,8 @@ fun AlbumDetailCard(
     }
 }
 
-@Preview(showBackground = true)
 @Composable
+@Preview
 fun AlbumDetailCardPreview() {
     AlbumDetailCard(
         imageUrl = "",

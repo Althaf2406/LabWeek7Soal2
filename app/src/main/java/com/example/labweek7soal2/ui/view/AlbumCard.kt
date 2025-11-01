@@ -48,7 +48,9 @@ fun AlbumCard(
                 contentScale = ContentScale.Crop
             )
 
-            Column(modifier = Modifier.padding(12.dp)) {
+            Column(
+                modifier = Modifier.padding(12.dp)
+            ) {
                 Text(
                     text = album.title,
                     color = Color(0xFFAEAC96),
@@ -68,15 +70,16 @@ fun AlbumCard(
     }
 }
 
-@Preview(showBackground = true)
+
 @Composable
+@Preview
 fun AlbumCardPreview() {
     AlbumCard(
         album = AlbumDisplay(
             id = "1",
             title = "Best Hits",
             year = "2002",
-            thumbUrl = "https://i.imgur.com/album.png",
+            thumbUrl = "",
             description = "Classic album",
             genre = "Pop"
         ),
